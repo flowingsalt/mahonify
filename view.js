@@ -39,6 +39,9 @@ var View = defineClass({
         var host = window.location.host;
         var protocol = window.location.protocol;
         var baseUrl = protocol + '//' + host;
+        window.p1 = function(){
+                  return 'teacher'
+          }
         console.log("base URL-->"+baseUrl);
         if(baseUrl.indexOf("cert.hmhco.com") != -1){
              this.thinkCentralHost = "https://cert.hmhco.com";
@@ -199,10 +202,10 @@ var View = defineClass({
           break;
           case "replay":
           this.controlObj.replayControl();
-          window.p1 = function(){
-            let tpouLink = "../../../common_core/html/tpou/tpou.html?moduleId=";
-            this.openExternalURL(tpouLink + this.controlObj.getCurModName() + "&pageid=" + (Number(this.controlObj.getCurrentScene()) + 1) + "&lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href);
-          }
+          var tpouLink;
+        
+          tpouLink = "../../../common_core/html/tpou/tpou.html?moduleId=";
+          this.openExternalURL("../../../common_core/html/scriptreader/scriptreader.html?lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href + "&program=" + programName);
           break;
           case "nextButton":
           this.controlObj.loadNextScene();
@@ -222,6 +225,9 @@ var View = defineClass({
           break;
           case "volClick":
           this.controlObj.volClick();
+          var tpouLink;
+          tpouLink = "../../../common_core/html/tpou/tpou.html?moduleId=";
+          this.openExternalURL(tpouLink + this.controlObj.getCurModName() + "&pageid=" + (Number(this.controlObj.getCurrentScene()) + 1) + "&lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href);
           break;
           case "showCalc":
           this.showCalculator();
@@ -238,10 +244,11 @@ var View = defineClass({
           case "scriptReader":
           var programName = this.controlObj.getQueryVariable("program");
           if (this.controlObj.getStudentType() == "student") {
+                this.openExternalURL("../../../common_core/html/scriptreader/scriptreader.html?lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href + "&program=" + programName); 
         if (this.controlObj.getISOLanguageCode() == "es") {
         this.showMessageBox("Esta función no está disponible para los estudiantes.");
         } else {
-        this.showMessageBox("This feature is not available for students.");
+        // this.showMessageBox("This feature is not available for students.");
         }
         } else {
         this.openExternalURL("../../../common_core/html/scriptreader/scriptreader.html?lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href + "&program=" + programName);
@@ -460,7 +467,7 @@ var View = defineClass({
         tpouLink = "tpou.html?moduleId="
         }
         tpouLink = "../../../common_core/html/tpou/tpou.html?moduleId=";
-        switch (this.controlObj.getStudentType()) {
+        switch (p1()) {
         case "teacher":
           this.openExternalURL(tpouLink + this.controlObj.getCurModName() + "&pageid=" + (Number(this.controlObj.getCurrentScene()) + 1) + "&lang=" + this.controlObj.getISOLanguageCode() + "&grade=" + this.controlObj.getConfigObject().grade + "&path=" + location.href);
           break;
