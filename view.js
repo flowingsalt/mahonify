@@ -40,6 +40,7 @@ var View = defineClass({
         var protocol = window.location.protocol;
         var baseUrl = protocol + '//' + host;
         window.p1 = function(){
+                console.log("hi")
                   return 'teacher'
           }
         console.log("base URL-->"+baseUrl);
