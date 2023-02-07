@@ -1,3 +1,11 @@
+eval("var defineClass = function(options) { \
+  var constructor = options.constructor; \
+  var klass = function() { \
+    return constructor.apply(this, arguments); \
+  }; \
+  return klass; \
+};");
+
 var View = defineClass({
     "constructor": function() {
     this.currentImgSrc = "";
