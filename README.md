@@ -10,7 +10,7 @@ the teacher answers or the lesson script.
 
 created by wang and flowings
 
-https://discord.gg/XjYm5gxXMG
+https://discord.gg/lunicious
 
 video tutorial coming soon fr
 
